@@ -1,0 +1,15 @@
+{
+  "name": "MapBox-App-NodeJs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "git@github.com:Ludociel/MapBox-App-NodeJs.git",
+  "author": "Breyner Sánchez <breinersanchez97@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "color": "^4.0.1",
+    "inquirer": "^8.1.5"
+  }
+}
