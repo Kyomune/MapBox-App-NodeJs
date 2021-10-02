@@ -9,7 +9,7 @@
   "author": "Breyner Sánchez <breinersanchez97@hotmail.com>",
   "license": "MIT",
   "dependencies": {
-    "color": "^4.0.1",
+    "colors": "^1.4.0",
     "inquirer": "^8.1.5"
   }
 }
