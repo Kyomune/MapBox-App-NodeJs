@@ -8,12 +8,8 @@ const inquirerMenu = async () => {
       name: "option",
       message: "¿Qué desea hacer?",
       choices: [
-        { value: "1", name: `${"1.".green} Crear Tarea` },
-        { value: "2", name: `${"2.".green} Listar tareas` },
-        { value: "3", name: `${"3.".green} Listar tareas completadas` },
-        { value: "4", name: `${"4.".green} Listar tareas pendientes` },
-        { value: "5", name: `${"5.".green} Completar una tarea` },
-        { value: "6", name: `${"6.".green} Borrar una tarea` },
+        { value: "1", name: `${"1.".green} Buscar Ciudad` },
+        { value: "2", name: `${"2.".green} Historial` },
         { value: "0", name: `${"0.".green} Salir` },
       ],
     },
@@ -61,12 +57,12 @@ const readInput = async (message) => {
   return desc;
 };
 
-const taskListDelete = async (taskes = []) => {
-  const choices = taskes.map(({ id, desc }, index) => {
+const placesList = async (places = []) => {
+  const choices = places.map(({ id, name }, index) => {
     const idx = `${index + 1}.`.green;
     return {
       value: id,
-      name: `${idx} ${desc}`,
+      name: `${idx} ${name}`,
     };
   });
 
@@ -75,7 +71,9 @@ const taskListDelete = async (taskes = []) => {
     name: "0.".green + " Cancelar",
   });
 
-  const questions = [{ type: "list", name: "id", message: "Borrar", choices }];
+  const questions = [
+    { type: "list", name: "id", message: "Seleccione lugar", choices },
+  ];
 
   const { id } = await inquirer.prompt(questions);
   return id;
@@ -116,7 +114,7 @@ module.exports = {
   inquirerMenu,
   pause,
   readInput,
-  taskListDelete,
+  placesList,
   confirm,
   showCheckList,
 };
