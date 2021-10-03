@@ -1,14 +1,13 @@
-const fs = require('fs')
+const fs = require("fs");
 
 const axios = require("axios");
 
 class Search {
-
   history = [];
-  dbPath = './db/database.json'
+  dbPath = "./db/database.json";
 
   constructor() {
-    this.loadDB()
+    this.loadDB();
   }
 
   get paramsMapbox() {
@@ -28,12 +27,12 @@ class Search {
   }
 
   get historyCapitalize() {
-    return this.history.map(place => {
-       let words = place.split(' ');
-       words = words.map( w => w[0].toUpperCase() + w.substring(1))
+    return this.history.map((place) => {
+      let words = place.split(" ");
+      words = words.map((w) => w[0].toUpperCase() + w.substring(1));
 
-       return words.join(' ')
-    })
+      return words.join(" ");
+    });
   }
 
   async city(place = "") {
@@ -85,28 +84,28 @@ class Search {
   }
 
   addHistory(place = "") {
-    if(this.history.includes(place.toLocaleLowerCase())) return
+    if (this.history.includes(place.toLocaleLowerCase())) return;
 
-    this.history = this.history.splice(0, 5)
+    this.history = this.history.splice(0, 5);
 
     this.history.unshift(place.toLocaleLowerCase());
   }
 
   saveDB() {
     const payload = {
-      history: this.history
-    }
+      history: this.history,
+    };
 
-    fs.writeFileSync( this.dbPath, JSON.stringify(payload))
+    fs.writeFileSync(this.dbPath, JSON.stringify(payload));
   }
 
   loadDB() {
-    if(!fs.existsSync(this.dbPath)) return
+    if (!fs.existsSync(this.dbPath)) return;
 
-    const info = fs.readFileSync(this.dbPath, { encoding: "utf-8" })
-    const data = JSON.parse(info)
+    const info = fs.readFileSync(this.dbPath, { encoding: "utf-8" });
+    const data = JSON.parse(info);
 
-    this.history = data.history
+    this.history = data.history;
   }
 }
 

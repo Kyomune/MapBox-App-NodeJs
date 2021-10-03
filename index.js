@@ -40,7 +40,7 @@ const main = async () => {
             lng: placeSelected.lng,
           });
 
-        search.saveDB()
+        search.saveDB();
 
         console.clear();
         console.log("\nInformación de la ciudad\n".green);
@@ -53,11 +53,11 @@ const main = async () => {
         console.log("Clima:", `${weatherDescription}`.green);
         break;
 
-        case "2":
-          search.historyCapitalize.forEach((place, i) => {
-            const idx =  `${i + 1}`.green
-            console.log( `${idx} ${place}`)
-          })
+      case "2":
+        search.historyCapitalize.forEach((place, i) => {
+          const idx = `${i + 1}`.green;
+          console.log(`${idx} ${place}`);
+        });
         break;
     }
 
